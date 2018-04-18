@@ -24,7 +24,7 @@ public class Interfaz extends JFrame  {
         setSize(400,400);           //Tamaño de la ventana
         setLocationRelativeTo(null);//Aparece en la mitad de la pantalla
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Para cerrar dando clic en la 'X'
-        getContentPane().add(panelPrincipal());
+        getContentPane().add(panelPrincipal()); //Agregamos el PanelPrincipal a la ventana
     }
 
     //Incializamos los elementos graficos
