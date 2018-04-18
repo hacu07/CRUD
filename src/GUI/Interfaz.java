@@ -1,6 +1,7 @@
 package GUI;
 
 
+import Ctrl.InterfazCtrl;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -25,6 +26,13 @@ public class Interfaz extends JFrame  {
         setLocationRelativeTo(null);//Aparece en la mitad de la pantalla
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Para cerrar dando clic en la 'X'
         getContentPane().add(panelPrincipal()); //Agregamos el PanelPrincipal a la ventana
+    }
+    
+    public void fijarEscuchas(InterfazCtrl c){
+        btnBuscar.addActionListener(c);
+        btnActualizar.addActionListener(c);
+        btnEliminar.addActionListener(c);
+        btnRegistrar.addActionListener(c);
     }
 
     //Incializamos los elementos graficos
@@ -77,5 +85,47 @@ public class Interfaz extends JFrame  {
         pPrincipal.add(btnEliminar);
         return pPrincipal;
     }
+
+    public JTextField getTxtNomMascota() {
+        return txtNomMascota;
+    }
+
+    public void setTxtNomMascota(JTextField txtNomMascota) {
+        this.txtNomMascota = txtNomMascota;
+    }
+
+    public JTextField getTxtNomDueño() {
+        return txtNomDueño;
+    }
+
+    public void setTxtNomDueño(JTextField txtNomDueño) {
+        this.txtNomDueño = txtNomDueño;
+    }
+
+    public JTextField getTxtNomCriadero() {
+        return txtNomCriadero;
+    }
+
+    public void setTxtNomCriadero(JTextField txtNomCriadero) {
+        this.txtNomCriadero = txtNomCriadero;
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnRegistrar() {
+        return btnRegistrar;
+    }
+
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public JButton getBtnEliminar() {
+        return btnEliminar;
+    }
+    
+    
     
 }

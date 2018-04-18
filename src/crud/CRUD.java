@@ -1,6 +1,10 @@
 
 package crud;
 import Conexion.Conexion;
+import Ctrl.InterfazCtrl;
+import DAO.InterfazDao;
+import DTO.InterfazDto;
+import FACADE.InterfazFacade;
 import GUI.Interfaz;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -16,8 +20,21 @@ public class CRUD {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         CRUD crud = new CRUD();
-        Interfaz objetoInterfaz = new Interfaz();
-        objetoInterfaz.setVisible(true); //Muestra la ventana
+        
+        //dto
+        InterfazDto dto =  new InterfazDto();
+        //dao
+        InterfazDao dao =  new InterfazDao();
+        //facade
+        InterfazFacade fd =  new InterfazFacade();
+        //Vista
+        Interfaz interfaz = new Interfaz();
+        //Controlador
+        InterfazCtrl ctrl = new InterfazCtrl(interfaz,fd);
+        //FijarEscuchas
+        interfaz.fijarEscuchas(ctrl);
+        
+        interfaz.setVisible(true); //Muestra la ventana
         
     }
     
