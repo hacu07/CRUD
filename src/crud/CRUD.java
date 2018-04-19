@@ -34,6 +34,7 @@ public class CRUD {
         //FijarEscuchas
         interfaz.fijarEscuchas(ctrl);
         
+        ctrl.consultarNombresCriaderos();
         interfaz.setVisible(true); //Muestra la ventana
         
     }

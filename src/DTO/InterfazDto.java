@@ -1,10 +1,13 @@
 
 package DTO;
 
+import java.util.ArrayList;
+
 public class InterfazDto implements IDTO {
     //Propiedades - Atributos - Variables
     private int codMascota,codCriadero;
     private String nombreMascota,propietario,nombreCriadero;
+    private ArrayList<String> nombresCriaderos = new ArrayList<String>();
     
     //Contructor
     public InterfazDto(){
@@ -15,6 +18,12 @@ public class InterfazDto implements IDTO {
     public InterfazDto(String nombreMascota){
         super();
         this.nombreMascota = nombreMascota;
+    }
+    
+    //Contructor que recibe como parametro la lista de los nombres de los criaderos
+    public InterfazDto(String nombreCriadero, int num){
+        super();
+        this.nombresCriaderos.add(nombreCriadero);
     }
     
     //Contructor con parametros
@@ -68,6 +77,16 @@ public class InterfazDto implements IDTO {
         this.nombreCriadero = nombreCriadero;
     }
 
+    public ArrayList<String> getNombresCriaderos() {
+        return nombresCriaderos;
+    }
+
+    public void setNombresCriaderos(ArrayList<String> nombresCriaderos) {
+        this.nombresCriaderos = nombresCriaderos;
+    }
+    
+    
+
     @Override
     public String insertar() {
        String sql = "";
@@ -98,6 +117,10 @@ public class InterfazDto implements IDTO {
        return sql;
     }
     
-    
+    public String consultarNombresCriaderos(){
+        String sql = "SELECT nombreCriadero FROM criaderos";
+        System.out.println(sql);
+        return sql;
+    }
     
 }

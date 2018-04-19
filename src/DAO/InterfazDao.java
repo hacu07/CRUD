@@ -23,6 +23,19 @@ public class InterfazDao {
         return per;
     }
     
+    public InterfazDto consultarNombresCriaderos(InterfazDto objetoInterfaz){
+        ResultSet rs = Conexion.ejecutarConsulta(objetoInterfaz.consultarNombresCriaderos());
+        InterfazDto per = null;
+        try{    
+            while(rs.next()){
+                per = new InterfazDto(rs.getString("nombreCriadero"),1);//Envia el nombre de la mascota al constructor que solo recibe el string del nombreMascota
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return per;
+    }
+    
     //Elimina la mascota
     public Boolean eliminar(InterfazDto objetoInterfaz){
         return Conexion.ejecutarActualizacion(objetoInterfaz.eliminar()) == 1;

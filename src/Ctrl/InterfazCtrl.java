@@ -21,6 +21,15 @@ public class InterfazCtrl implements ActionListener {
         this.objetoInterfaz = gui;
     }
     
+    //Consulta los nombres de los criaderos de la BD y los muestra en un combobox para el usuario
+    public void consultarNombresCriaderos(){
+        objetoFacade.consultarNombresCriaderos();
+        InterfazDto dto = new InterfazDto();
+        for(int i = 0; i<dto.getNombresCriaderos().size(); i++){
+            objetoInterfaz.getComboCriadero().addItem(dto.getNombresCriaderos().get(i));
+        }
+    }
+    
     //Acciones que se ejecutan al dar clic en cada boton
     @Override
     public void actionPerformed(ActionEvent ae) {
@@ -35,7 +44,20 @@ public class InterfazCtrl implements ActionListener {
             }catch(Exception e){//Si algo falla en la ejecucion del 'try'
                 //Muestra mensaje en caso de error
                 JOptionPane.showMessageDialog(null,"Ha ocurrio un error","Error",JOptionPane.ERROR_MESSAGE); 
-
+            }
+        }else if(ae.getSource()==objetoInterfaz.getBtnActualizar()){
+            try{
+                objetoFacade.actualizar(String.valueOf(objetoInterfaz.getTxtNomMascota().getText()),
+                                        String.valueOf(objetoInterfaz.getTxtNomCriadero().getText()),
+                                        String.valueOf(objetoInterfaz.getTxtNomDueño().getText()));
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Ha ocurrio un error","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }else if(ae.getSource()==objetoInterfaz.getBtnEliminar()){
+            try{
+                objetoFacade.eliminar(String.valueOf(objetoInterfaz.getTxtNomMascota().getText()));
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null,"Ha ocurrio un error","Error",JOptionPane.ERROR_MESSAGE);
             }
         }
     }
