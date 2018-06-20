@@ -6,6 +6,7 @@ import DTO.InterfazDto;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/*Comentario de prueba para colaboración en proyecto GitHub*/
 
 public class InterfazDao {
     
